@@ -1,0 +1,1 @@
+print("kør kode på rasp pi")
