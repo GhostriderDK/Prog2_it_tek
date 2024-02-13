@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../../.."
+		},
+		{
+			"name": "SSH FS - rasp_pi_zero_gundsoe",
+			"uri": "ssh://rasp_pi_zero_gundsoe/home/gundsoe/Desktop"
+		}
+	],
+	"settings": {}
+}
