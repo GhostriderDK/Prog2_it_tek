@@ -1,7 +1,7 @@
 import sqlite3
 import Adafruit_DHT
-import RTC
-from time import sleep
+import datetime
+import time 
 
 
 conn = sqlite3.connect('dht11.db')
@@ -15,7 +15,7 @@ pin = 23
 rtc = RTC()
 while True:
 
-    Time = rtc.datetime()
+    Time = datetime('now', 'localtime')
     Temp = temperature = Adafruit_DHT.read_retry(sensor, pin)
     Humi = humidity = Adafruit_DHT.read_retry(sensor, pin)
     sleep(10)
