@@ -7,17 +7,16 @@ import time
 conn = sqlite3.connect('dht11.db')
 
 query = 'INSERT INTO airdata (Datetime, Temperature, Humidity) VALUES(?,?,?)'
-data = (Time, Temp, Humi)
+
 
 sensor = Adafruit_DHT.DHT11
 pin = 23
-
-rtc = RTC()
 while True:
 
-    Time = datetime('now', 'localtime')
+    Time = datetime.now()
     Temp = temperature = Adafruit_DHT.read_retry(sensor, pin)
     Humi = humidity = Adafruit_DHT.read_retry(sensor, pin)
+    data = (Time, Temp, Humi)
     sleep(10)
     try:
         cur = conn.cursor()
