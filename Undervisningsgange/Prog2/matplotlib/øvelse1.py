@@ -24,9 +24,9 @@ ax.yaxis.label.set_color('Yellow') #setting up y-axis label color to hotpink
 ax.tick_params(axis='x', colors='red')
 ax.tick_params(axis='y', colors='yellow')
 
-ax.spines['left'].set_color('white') # setting up Y-axis tick color to blue
+ax.spines['left'].set_color('cyan') # setting up Y-axis tick color to blue
 ax.spines['top'].set_color('purple') #setting up above X-axis tick color to blue
-ax.spines['bottom'].set_color('white') #setting up above X-axis tick color to blue
+ax.spines['bottom'].set_color('Cyan') #setting up above X-axis tick color to blue
 ax.spines['right'].set_color('purple') #setting up above X-axis tick color to blue
 
 plt.show()
