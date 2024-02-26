@@ -5,7 +5,7 @@ from time import sleep
 
 def get_stue_data(number_of_rows):
     while True:
-        query = """SELECT * FROM stue;"""
+        query = """SELECT * FROM stue ORDER BY datetime DESC;"""
         datetimes = []
         temperatures = []
         humidities = []
@@ -14,7 +14,7 @@ def get_stue_data(number_of_rows):
             cur = conn.cursor()
             cur.execute(query)
             rows = cur.fetchmany(number_of_rows)
-            for row in rows:
+            for row in reversed(rows):
                 datetimes.append(row[0])
                 temperatures.append(row[1])
                 humidities.append(row[2]) 

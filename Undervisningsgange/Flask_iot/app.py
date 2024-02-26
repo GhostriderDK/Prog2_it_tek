@@ -12,7 +12,17 @@ def stue_temp():
     # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
-    ax.plot(timestamps, temp)
+    fig.subplots_adjust(bottom=0.3)
+    ax.tick_params(axis='x', which='both', rotation=30)
+    ax.set_facecolor("white")
+    ax.plot(timestamps, temp, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax.set_xlabel("Timestamps")
+    ax.set_ylabel("Temp in C")
+    fig.patch.set_facecolor("orange")
+    ax.tick_params(axis="x", colors="black")
+    ax.tick_params(axis="y", colors="blue")
+    ax.spines["left"].set_color("blue")
+
     # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
@@ -25,7 +35,17 @@ def stue_hum():
     # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
-    ax.plot(timestamps, hum)
+    fig.subplots_adjust(bottom=0.3)
+    ax.tick_params(axis='x', which='both', rotation=30)
+    ax.set_facecolor("white")
+    ax.plot(timestamps, hum, linestyle="dashed", c="#11f", linewidth="1.5", marker="d")
+    ax.set_xlabel("Timestamps")
+    ax.set_ylabel("Humidity %")
+    fig.patch.set_facecolor("orange")
+    ax.tick_params(axis="x", colors="black")
+    ax.tick_params(axis="y", colors="blue")
+    ax.spines["left"].set_color("blue")
+    
     # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
