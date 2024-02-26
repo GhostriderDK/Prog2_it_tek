@@ -2,14 +2,17 @@ import base64
 from io import BytesIO
 from matplotlib.figure import Figure
 from flask import Flask, render_template
+from get_stue_dht11_data import get_stue_data
 
 app = Flask(__name__)
 
 def stue_temp():
+    timestamps, temp, hum = get_stue_data(10)
+
     # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
-    ax.plot([1, 2])
+    ax.plot(timestamps, temp)
     # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
@@ -18,10 +21,11 @@ def stue_temp():
     return data
 
 def stue_hum():
+    timestamps, temp, hum = get_stue_data(10)
     # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
-    ax.plot([2, 1])
+    ax.plot(timestamps, hum)
     # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
