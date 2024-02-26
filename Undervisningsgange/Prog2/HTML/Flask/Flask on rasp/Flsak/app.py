@@ -3,7 +3,6 @@ from flask import Flask, abort, render_template
 import base64
 from io import BytesIO
 from matplotlib.figure import Figure
-import Adafruit_DHT
 import sqlite3
 from datetime import datetime
 from time import sleep
@@ -13,7 +12,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index/')
 def hello():
-    return render_template('index.html', utc_dt=datetime.datetime.utcnow())
+    return render_template('index.html', utc_dt=datetime.utcnow())
 
 @app.route('/about/')
 def about():
@@ -44,8 +43,8 @@ def greet_user(user_id):
     except IndexError:
         abort(404)
 
-@app.route('/sensor_data')
-def Sensor_data():
+@app.route('/sensor_data/')
+def sensor_data():
 
     query = """SELECT * FROM dht11 LIMIT 20;"""
     try:
@@ -55,9 +54,9 @@ def Sensor_data():
         result = cur.execute(query)
         rows = result.fetchall()
         for row in rows:   
-        print(f"""\ttimestamp: {row["datetime"]}\n
-        temperature: {row["temperature"]}\n
-        humidity: {row["humidity"]}\n""")
+            print(f"""\ttimestamp: {row["datetime"]}\n
+            temperature: {row["temperature"]}\n
+            humidity: {row["humidity"]}\n""")
         
 
     except sqlite3.Error as e: 
@@ -90,3 +89,5 @@ def Sensor_data():
 
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return f"<img src='data:image/png;base64,{data}'/>"
+
+app.run()
